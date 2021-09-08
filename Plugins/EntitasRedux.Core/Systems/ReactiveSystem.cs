@@ -35,7 +35,7 @@ namespace JCMG.EntitasRedux
 	/// of the related gameObject.
 	/// </summary>
 	/// <typeparam name="TEntity"></typeparam>
-	public abstract class ReactiveSystem<TEntity> : IReactiveSystem
+	public abstract class ReactiveSystem<TEntity> : IReactiveSystem, IUpdateSystem
 		where TEntity : class, IEntity
 	{
 		private readonly List<TEntity> _buffer;
@@ -80,6 +80,8 @@ namespace JCMG.EntitasRedux
 
 			return _toStringCache;
 		}
+
+		public void Update() => Execute();
 
 		~ReactiveSystem()
 		{
